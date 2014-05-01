@@ -1,0 +1,19 @@
+#! /bin/sh
+rules="$HOME/.makerules"
+
+if [[ -z "$1" ]]; then
+
+  echo "Usage: $(basename $0) files" 1>&2
+  echo "" 1>&2
+
+  (
+    echo "Variable| Default| Description"
+    echo "--------| -------| -----------"
+    awk -F'(?=|#)' '/?=/ {print $1"|"$2"|"$3}' "$rules"
+  ) | column -t -s'|' 1>&2
+
+fi
+
+for target in $@; do
+  make -f "$rules" "$target"
+done

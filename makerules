@@ -1,0 +1,29 @@
+# vim: set ft=make:
+
+# Compression
+%.zip: %
+	zip -r $(@) $(<)
+	
+%.tar.gz: %
+	tar czf $(@) $(<)
+
+# Documents
+PANDOCFLAGS ?= --listings --smart # Options for Pandoc
+%.pdf: %.md
+	pandoc $(PANDOCFLAGS) -f markdown -t latex -o $(@) $(<)
+
+# Graphviz
+GV ?= dot # Sets the program used for Graphviz compilation
+%.png: %.dot
+	$(GV) -Tpng -o $(@) $(<)
+
+%.pdf: %.dot
+	$(GV) -Tpdf -o $(@) $(<)
+
+%.svg: %.dot
+	$(GV) -Tsvg -o $(@) $(<)
+
+# Getting rid of XML
+%.haml: %.xml
+	html2haml $(<) $(@)
+
