@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Want And Gimme by bogwonch</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/bogwonch/want-and-gimme">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/bogwonch/want-and-gimme/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/bogwonch/want-and-gimme/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Want And Gimme</h1>
+          <p>Make scripts to Gimme what I Want</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/bogwonch">bogwonch</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>
+<a name="want-and-gimme" class="anchor" href="#want-and-gimme"><span class="octicon octicon-link"></span></a>Want and Gimme</h1>
+
+<ul>
+<li>
+<code>want document.tex</code>: go figure out how to build me my document.</li>
+<li>
+<code>gimme pdf</code>: work out if there is anything you can convert into a pdf and do so.</li>
+</ul><p>When I'm working on a project I can't remember what all the build commands are so I use a Makefile.
+Wherever possible I use implicit rules to just convert whatever I've called my code into the obviously named other format.</p>
+
+<p>Some of these come baked into Make through a config file hidden somewhere not documented in my manpages.  Screw this: just <em>gimme what I want</em>.</p>
+
+<h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h2>
+
+<p>Rules go in <code>~/.makerules</code>.  Normal makefile syntax we all know and hate.  <code>want</code> will pick up this file and use it to try and build the files you want. </p>
+
+<p>The <code>gimme</code> script is for when you're even more lazy and rude or you have a bunch of files that all need converting (like when you're writing <code>.dot</code> files then converting them to <code>.eps</code> to stick in a LaTeX document).   Just tell it to <code>gimme filetype</code> and it will try and convert any file it knows how to into that filetype.</p>
+
+<h2>
+<a name="options" class="anchor" href="#options"><span class="octicon octicon-link"></span></a>Options</h2>
+
+<p>Some want rules are customizable!  You wanna convert a graphviz diagram but <em>just can't decide which layout engine to use?</em>  We've got you covered!  Use the <code>GV</code> variable to set the layout engine.  </p>
+
+<p>Wanna see what other options are available?  Just run <code>want</code> without any arguments.</p>
+
+<p>Do you want to be <em>really</em> cool and add more options?  They're written in your <code>.makerules</code> file.</p>
+
+<p><code>GV ?= dot # Sets the GraphViz layout engine</code>
+<code>OptionName ?= DefaultValue # Documentation</code></p>
+
+<h2>
+<a name="bugs" class="anchor" href="#bugs"><span class="octicon octicon-link"></span></a>Bugs</h2>
+
+<p>Many.  Report and/or fix'em.  This was coded in an afternoon while trying to avoid my thesis proposal, but it's turned out useful enough for a real project.</p>
+
+<h2>
+<a name="future-features" class="anchor" href="#future-features"><span class="octicon octicon-link"></span></a>Future features</h2>
+
+<ul>
+<li>Nicer output!</li>
+<li>More rules (suggestions appreciated!)</li>
+<li><code>want a kitteh</code></li>
+<li><del><code>want a sandwich</code></del></li>
+</ul>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
