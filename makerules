@@ -3,13 +3,16 @@
 # Compression
 %.zip: %
 	zip -r $(@) $(<)
-	
+
 %.tar.gz: %
 	tar czf $(@) $(<)
 
 # Documents
 PANDOCFLAGS ?= --listings --smart # Options for Pandoc
 %.pdf: %.md
+	pandoc $(PANDOCFLAGS) -f markdown -t latex -o $(@) $(<)
+
+%.tex: %.markdown
 	pandoc $(PANDOCFLAGS) -f markdown -t latex -o $(@) $(<)
 
 # Graphviz
@@ -23,16 +26,32 @@ GV ?= dot # Sets the program used for Graphviz compilation
 %.svg: %.dot
 	$(GV) -Tsvg -o $(@) $(<)
 
+%.eps: %.dot
+	$(GV) -Teps -o $(@) $(<)
+
+%.ps: %.pdf
+	pdf2ps $<
+
 # Getting rid of XML
 %.haml: %.xml
 	html2haml $(<) $(@)
 
 
-# LaTeX
-LATEX ?= lualatex
-%.pdf: %.tex
-	latexmk -latex=$(latex) --latexoption=--src-specials $(<)
+# Tags
+tags:
+	ctags --recurse .
 
+# LaTeX
+%.pdf: %.tex
+	latexmk --latexoption=--src-specials $(<)
+
+# SVG to EPS
+%.eps: %.svg
+	inkscape -f $(<) -A $(@)
+
+# Websites
+%.html: %.haml
+	haml $(<) $(@)
 
 # Haha
 me a:
@@ -47,4 +66,4 @@ endif
 
 .PHONY: me a sandwich
 .PHONY: a sandwich
-	
+

@@ -9,7 +9,7 @@ if [[ -z "$1" ]]; then
   (
     echo "Variable| Default| Description"
     echo "--------| -------| -----------"
-    awk -F'(?=|#)' '/?=/ {print $1"|"$2"|"$3}' "$rules"
+    gawk -F'(?=|#)' '/?=/ {print $1"|"$2"|"$3}' "$rules"
   ) | column -t -s'|' 1>&2
 
 fi
